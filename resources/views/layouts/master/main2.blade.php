@@ -307,13 +307,13 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('kabupaten')}}"><i class="fa fa-circle-o"></i>Kab/Kota</a></li>
-            <li><a href="{{ url('opd')}}"><i class="fa fa-circle-o"></i>ODP</a></li>
+            <li><a href="{{ url('../kabupaten')}}"><i class="fa fa-circle-o"></i>Kab/Kota</a></li>
+            <li><a href="{{ url('../opd')}}"><i class="fa fa-circle-o"></i>ODP</a></li>
             
-            <li><a href="{{ url('upp')}}"><i class="fa fa-circle-o"></i> UPP</a></li>
+            <li><a href="{{ url('../upp')}}"><i class="fa fa-circle-o"></i> UPP</a></li>
           </ul>
         </li>
-        <li><a href="{{ url('berita')}}"><i class="fa fa-book"></i> <span>Berita</span></a></li>
+        <li><a href="{{ url('../berita')}}"><i class="fa fa-book"></i> <span>Berita</span></a></li>
         <li><a href="#"><i class="fa fa-calendar"></i> <span>Jadwal</span></a></li>
         <li class="treeview">
           <a href="#">
@@ -323,9 +323,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('kuesioner')}}"><i class="fa fa-circle-o"></i>Kuisoner</a></li>
+            <li><a href="{{ url('../kuesioner')}}"><i class="fa fa-circle-o"></i>Kuisoner</a></li>
             <li><a href="laporan"><i class="fa fa-circle-o"></i>Kelola Hasil Akhir</a></li>
-            <li><a href="{{ url('responden')}}"><i class="fa fa-circle-o"></i>Laporan</a></li>
+            <li><a href="{{ url('../responden')}}"><i class="fa fa-circle-o"></i>Laporan</a></li>
             
           </ul>
         </li>
@@ -350,7 +350,7 @@
     <section class="content">
 
 
-	@yield('content')
+  @yield('content')
 
 
     </section>

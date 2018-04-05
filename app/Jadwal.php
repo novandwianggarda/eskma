@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Kabupaten extends Model
+class Jadwal extends Model
 {
     //
 }

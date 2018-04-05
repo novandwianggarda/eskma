@@ -13,6 +13,6 @@ class BeritaController extends Controller
     {
          $beritas = Berita::all();
 
-        return view('layouts.berita.index', compact('beritas'));
+        return view('super.berita.index', compact('beritas'));
     }
 }

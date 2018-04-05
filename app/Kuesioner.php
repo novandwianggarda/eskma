@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kuesioner extends Model
 {
-    protected $fillable = ['uup_id', 'pertanyaan'];
+    //
+    public $timestamps=false;
+
+    public function upp(){
+    	return $this->belongsTo('App\Upp');
+    }
+    public function jawaban(){
+    	return $this->hasMany('App\Jawaban');
+    }
 }
