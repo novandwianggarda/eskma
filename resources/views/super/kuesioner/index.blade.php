@@ -1,7 +1,12 @@
 @extends('layouts.master.main')
 @section('content')    
     <h2>Kuesioner</h2>
-    <a href="{{ url('kuesioner/tambah')}}" class="btn btn-primary" style="margin-bottom: 20px;">Tambah</a>
+    @if($kuesioner->count() < 1)
+    <a href="{{ url('kuesioner/tambah/'.$id)}}" class="btn btn-primary" style="margin-bottom: 20px;">Tambah</a>
+    @endif
+    <a href="{{ url('kuesioner/preview/'.$id)}}" class="btn btn-success" style="margin-bottom: 20px;">Preview</a>
+    <a href="{{ url('kuesioner/jawab/'.$id)}}" class="btn btn-info" style="margin-bottom: 20px;">Jawab</a>
+    <a href="{{ route('upp.index')}}" class="btn btn-default" style="margin-bottom: 20px;">Kembali</a>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
@@ -17,7 +22,7 @@
                     <td>{{$i++}}</td>
                     <td>{{$k->pertanyaan}}</td>
                     <td>
-                        <a href="" class="btn btn-light" data-toggle="tooltip" title="Lihat Kuesioner">Edit</a>
+                        <a href="{{route('kuesioner.edit',['id'=>$k->id])}}" class="btn btn-primary" data-toggle="tooltip" title="Lihat Kuesioner">Edit</a>
                         <a href="" class="btn btn-danger" data-toggle="tooltip" title="Lihat Kuesioner">Hapus</a>
                     </td>
                 </tr>

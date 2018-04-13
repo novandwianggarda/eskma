@@ -15,4 +15,7 @@ class Kuesioner extends Model
     public function jawaban(){
     	return $this->hasMany('App\Jawaban');
     }
+    public function unsur(){
+    	return $this->belongsTo('App\Unsur');
+    }
 }

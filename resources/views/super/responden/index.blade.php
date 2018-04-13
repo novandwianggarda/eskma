@@ -8,13 +8,17 @@
                 <tr>
                     <th>No</th>
                     <th>Nama</th>
+                    <th>Pekerjaan</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach($r as $rs)
                 <tr>
-                    <td>1</td>
-                    <td>Kab</td>
+                    <td>{{$i++}}</td>
+                    <td>{{$rs->nama}}</td>
+                    <td>{{$rs->pekerjaan}}</td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

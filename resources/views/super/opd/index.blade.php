@@ -8,13 +8,17 @@
                 <tr>
                     <th>No</th>
                     <th>Nama</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach($user as $u)
                 <tr>
-                    <td>1</td>
-                    <td>Kab</td>
+                    <td>{{$i++}}</td>
+                    <td>{{$u->nama}}</td>
+                    <td><a href="{{route('opd.edit',['id'=>$u->user->id])}}" class="btn btn-primary">Edit</a></td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

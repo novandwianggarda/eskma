@@ -18,6 +18,9 @@ class CreateKuesionersTable extends Migration
             $table->integer('upp_id')->unsigned();
             $table->foreign('upp_id')->references('id')->on('upps')->onDelete('cascade');
             $table->string('pertanyaan',255);
+            $table->string('kategori',255);
+            $table->integer('unsur_id')->unsigned();
+            $table->foreign('unsur_id')->references('id')->on('unsurs')->onDelete('cascade');
         });
     }
 

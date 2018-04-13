@@ -19,7 +19,8 @@ class CreateJawabansTable extends Migration
             $table->foreign('responden_id')->references('id')->on('respondens')->onDelete('cascade');
             $table->integer('kuesioner_id')->unsigned();
             $table->foreign('kuesioner_id')->references('id')->on('kuesioners')->onDelete('cascade');
-            $table->string('jawaban',255);
+            $table->string('kinerja',255);
+            $table->string('kepentingan',255);
         });
     }
 

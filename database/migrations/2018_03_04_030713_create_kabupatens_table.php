@@ -15,7 +15,15 @@ class CreateKabupatensTable extends Migration
     {
         Schema::create('kabupatens', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('kabupaten',255);
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')
+                    ->on('users')
+                    ->onDelete('cascade');
+            $table->integer('provinsi_id')->unsigned();
+            $table->foreign('provinsi_id')->references('id')
+                    ->on('provinsis')
+                    ->onDelete('cascade');
+            $table->string('nama',255);
         });
     }
 

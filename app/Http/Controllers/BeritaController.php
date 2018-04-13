@@ -15,4 +15,14 @@ class BeritaController extends Controller
 
         return view('super.berita.index', compact('beritas'));
     }
+    public function store(Request $request)
+        {
+          $berita = new Berita;
+          $berita->judul = $request['judul'];
+          $berita->kategori =$request['kategori'];
+          $berita->berita = $request['berita'];
+          $berita->save();
+
+          return redirect()->route('berita.index');
+        }
 }

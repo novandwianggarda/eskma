@@ -29,10 +29,10 @@
     </div>
     <br>
     <br>
-    <div class="form-gorup">
+    <div class="form-gorup" style="margin-bottom: 14px;">
       {!! Form::label('berita', 'Berita', ['class'=>'control-label col-md-2']) !!}
       <div class="col-md-10">
-        {!! Form::text('berita', null, ['class'=>'form-control']) !!}
+        {!! Form::textArea('berita', null, ['class'=>'form-control']) !!}
         {!! $errors->has('berita')?$errors->first('berita'):'' !!}
       </div>
     </div>
@@ -46,7 +46,7 @@
 
     <div class="form-gorup">
       <div class="col-md-offset-2 col-md-10">
-        <input type="submit" value="save" class="btn btn-primary">
+        <input type="submit" value="save" class="btn btn-primary" style="margin-top: 14px;">
       </div>
     </div>
   {!! Form::close() !!}

@@ -12,14 +12,14 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($users->upp as $upp)
+                @foreach($users as $upp)
                 <tr>
                     <td>{{$i++}}</td>
                     <td>{{$upp->nama}}</td>
                     <td>
-                        <a href="" class="btn btn-primary" data-toggle="tooltip" title="Lihat Kuesioner">Lihat</a>
-                        <a href="" class="btn btn-light" data-toggle="tooltip" title="Lihat Kuesioner">Edit</a>
-                        <a href="" class="btn btn-danger" data-toggle="tooltip" title="Lihat Kuesioner">Hapus</a>
+                        <a href="{{route('kuesioner.index',['id'=>$upp->id])}}" class="btn btn-primary" data-toggle="tooltip" title="Lihat Kuesioner">Lihat</a>
+                        <a href="{{route('upp.edit',['id'=>$upp->id])}}" class="btn btn-light" data-toggle="tooltip" title="Edit Upp">Edit</a>
+                        <a href="#" class="btn btn-danger" data-toggle="tooltip" title="Hapus Upp">Hapus</a>
                     </td>
                 </tr>
                 @endforeach

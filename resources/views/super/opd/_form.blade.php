@@ -1,11 +1,11 @@
 <h2>{{$submit}} OPD</h2>
 <div class="form-group">
 	{!! Form::label('nama', 'Nama') !!}
-	{!! Form::text('nama', $user->name, ['class'=>'form-control','id'=>'nama']) !!}
+	{!! Form::text('nama', $opd, ['class'=>'form-control','id'=>'nama']) !!}
 </div>
 <div class="form-group">
 	{!! Form::label('username', 'Username') !!}
-	{!! Form::text('username', $user->username, ['class'=>'form-control','id'=>'username']) !!}
+	{!! Form::text('username', $user->name, ['class'=>'form-control','id'=>'username']) !!}
 </div>
 <div class="form-group">
 	{!! Form::label('email', 'Email') !!}

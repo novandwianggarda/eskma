@@ -8,13 +8,17 @@
                 <tr>
                     <th>No</th>
                     <th>Nama</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach($user as $u)
                 <tr>
-                    <td>1</td>
-                    <td>Kab</td>
+                    <td>{{$i++}}</td>
+                    <td>{{$u->kabupaten["nama"]}}</td>
+                    <td><a href="{{route('kabupaten.edit',['id'=>$u->id])}}" class="btn btn-primary">Edit</a></td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

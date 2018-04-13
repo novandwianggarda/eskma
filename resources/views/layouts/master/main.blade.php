@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ESKM | Dashboard</title>
+  <title>E - SKM</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="/AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="/AdminLTE/bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="/AdminLTE/bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="/AdminLTE/bower_components/morris.js/morris.css">
+
+  <link rel="stylesheet" href="/AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- jvectormap -->
   <link rel="stylesheet" href="/AdminLTE/bower_components/jvectormap/jquery-jvectormap.css">
   <!-- Theme style -->
@@ -30,9 +33,9 @@
     <!-- Logo -->
     <a href="home" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>ESKM</b></span>
+      <span class="logo-mini"><b>E - SKM</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>ESKM</b></span>
+      <span class="logo-lg"><b>E - SKM</b></span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -245,7 +248,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="/AdminLTE/dist/img/avatar5.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">ESKM</span>
+              <span class="hidden-xs">E - SKM</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -253,7 +256,7 @@
                 <img src="/AdminLTE/dist/img/avatar5.png" class="img-circle" alt="User Image">
 
                 <p>
-                  Admin - ESKM
+                  Admin - E - SKM
                   <small>Member since Juli. 2012</small>
                 </p>
               </li>
@@ -308,7 +311,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ url('kabupaten')}}"><i class="fa fa-circle-o"></i>Kab/Kota</a></li>
-            <li><a href="{{ url('opd')}}"><i class="fa fa-circle-o"></i>ODP</a></li>
+            <li><a href="{{ url('opd')}}"><i class="fa fa-circle-o"></i>OPD</a></li>
             
             <li><a href="{{ url('upp')}}"><i class="fa fa-circle-o"></i> UPP</a></li>
           </ul>
@@ -324,8 +327,8 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ url('kuesioner')}}"><i class="fa fa-circle-o"></i>Kuisoner</a></li>
-            <li><a href="laporan"><i class="fa fa-circle-o"></i>Kelola Hasil Akhir</a></li>
-            <li><a href="{{ url('responden')}}"><i class="fa fa-circle-o"></i>Laporan</a></li>
+            <li><a href="responden"><i class="fa fa-circle-o"></i>Kelola Hasil Akhir</a></li>
+            <li><a href="{{ url('laporan')}}"><i class="fa fa-circle-o"></i>Laporan</a></li>
             
           </ul>
         </li>
@@ -362,7 +365,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2018 <a href="https://adminlte.io">ESKM</a>.</strong> All rights
+    <strong>Copyright &copy; 2018 <a href="">E - SKM</a>.</strong> All rights
     reserved.
   </footer>
 
@@ -562,8 +565,12 @@
 <script src="/AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="/AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- chartjs -->
+<script src="/AdminLTE/bower_components/raphael/raphael.min.js"></script>
+<script src="/AdminLTE/bower_components/morris.js/morris.min.js"></script>
 <!-- FastClick -->
 <script src="/AdminLTE/bower_components/fastclick/lib/fastclick.js"></script>
+
 <!-- AdminLTE App -->
 <script src="/AdminLTE/dist/js/adminlte.min.js"></script>
 <!-- Sparkline -->
@@ -573,11 +580,110 @@
 <script src="/AdminLTE/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 <!-- SlimScroll -->
 <script src="/AdminLTE/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="/AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="/AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- ChartJS -->
 <script src="/AdminLTE/bower_components/Chart.js/Chart.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/AdminLTE/dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/AdminLTE/dist/js/demo.js"></script>
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example3').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
+<script>
+  $(function () {
+    "use strict";
+
+    // AREA CHART
+    var area = new Morris.Area({
+      element: 'revenue-chart',
+      resize: true,
+      data: [
+        {y: '2011 Q1', item1: 2666, item2: 2666},
+        {y: '2011 Q2', item1: 2778, item2: 2294},
+        {y: '2011 Q3', item1: 4912, item2: 1969},
+        {y: '2011 Q4', item1: 3767, item2: 3597},
+        {y: '2012 Q1', item1: 6810, item2: 1914},
+        {y: '2012 Q2', item1: 5670, item2: 4293},
+        {y: '2012 Q3', item1: 4820, item2: 3795},
+        {y: '2012 Q4', item1: 15073, item2: 5967},
+        {y: '2013 Q1', item1: 10687, item2: 4460},
+        {y: '2013 Q2', item1: 8432, item2: 5713}
+      ],
+      xkey: 'y',
+      ykeys: ['item1', 'item2'],
+      labels: ['Item 1', 'Item 2'],
+      lineColors: ['#a0d0e0', '#3c8dbc'],
+      hideHover: 'auto'
+    });
+
+    // LINE CHART
+    var line = new Morris.Line({
+      element: 'line-chart',
+      resize: true,
+      data: [
+        {y: '2011 Q1', item1: 2666},
+        {y: '2011 Q2', item1: 2778},
+        {y: '2011 Q3', item1: 4912},
+        {y: '2011 Q4', item1: 3767},
+        {y: '2012 Q1', item1: 6810},
+        {y: '2012 Q2', item1: 5670},
+        {y: '2012 Q3', item1: 4820},
+        {y: '2012 Q4', item1: 15073},
+        {y: '2013 Q1', item1: 10687},
+        {y: '2013 Q2', item1: 8432}
+      ],
+      xkey: 'y',
+      ykeys: ['item1'],
+      labels: ['Item 1'],
+      lineColors: ['#3c8dbc'],
+      hideHover: 'auto'
+    });
+
+    //DONUT CHART
+    var donut = new Morris.Donut({
+      element: 'sales-chart',
+      resize: true,
+      colors: ["#3c8dbc", "#f56954", "#00a65a"],
+      data: [
+        {label: "Download Sales", value: 12},
+        {label: "In-Store Sales", value: 30},
+        {label: "Mail-Order Sales", value: 20}
+      ],
+      hideHover: 'auto'
+    });
+    //BAR CHART
+    var bar = new Morris.Bar({
+      element: 'bar-chart',
+      resize: true,
+      data: [
+        {y: '2006', a: 100, b: 90},
+        {y: '2007', a: 75, b: 65},
+        {y: '2008', a: 50, b: 40},
+        {y: '2009', a: 75, b: 65},
+        {y: '2010', a: 50, b: 40},
+        {y: '2011', a: 75, b: 65},
+        {y: '2012', a: 100, b: 90}
+      ],
+      barColors: ['#00a65a', '#f56954'],
+      xkey: 'y',
+      ykeys: ['a', 'b'],
+      labels: ['CPU', 'DISK'],
+      hideHover: 'auto'
+    });
+  });
+</script>
 </body>
 </html>

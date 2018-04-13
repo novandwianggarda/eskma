@@ -16,6 +16,7 @@ class CreateRespondensTable extends Migration
         Schema::create('respondens', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nip');
+            $table->string('nama',255);
             $table->string('kabupaten');
             $table->integer('umur');
             $table->string('pendidikan',100);

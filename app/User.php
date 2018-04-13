@@ -30,4 +30,20 @@ class User extends Authenticatable
     public function upp(){
         return $this->hasMany('App\Upp');
     }
+
+    public function provinsi(){
+        return $this->hasOne('App\Provinsi');
+    }
+
+    public function kabupaten(){
+        return $this->hasOne('App\Kabupaten');
+    }
+
+    public function opdprovinsi(){
+        return $this->hasOne('App\Opdprovinsi');
+    }
+
+    public function opdkabupaten(){
+        return $this->hasOne('App\Opdkabupaten');
+    }
 }
